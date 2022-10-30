@@ -1,0 +1,24 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon routeapp.js",
+    "start-server": "node routeapp.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livingmaDreams/Node-Sharpener.git"
+  },
+  "author": "Deepika",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/livingmaDreams/Node-Sharpener/issues"
+  },
+  "homepage": "https://github.com/livingmaDreams/Node-Sharpener#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
