@@ -1,0 +1,16 @@
+{
+  "name": "groupchat",
+  "version": "1.0.0",
+  "description": "to send msg",
+  "main": "grpchat.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "nodemon grpchat.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "nodemon": "^2.0.20"
+  }
+}
