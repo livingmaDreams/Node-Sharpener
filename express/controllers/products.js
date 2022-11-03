@@ -2,11 +2,21 @@ const path = require('path');
 
 const rootDir = require('../util/path');
 
-exports.addproductget = (req,res,next) =>{
+const Product = require('../models/addproduct')
+
+exports.getaddproduct = (req,res,next) =>{
     res.sendFile(path.join(rootDir,'views','addproduct.html'))
    };
 
-exports.addproductpost = (req,res,next)=>{
-    console.log(req.body);
-    res.redirect('/shop');
+exports.postaddproduct = (req,res,next)=>{
+    const product = new Product(req.body.title);
+    product.save();
+    res.redirect('/add-product');
 }
+
+exports.shopget = (req,res,next)=>{
+    res.sendFile(path.join(rootDir,'views','shop.html'))
+    console.log(Product.fetchAll((products) =>{
+        console.log(products);
+    }));
+};
