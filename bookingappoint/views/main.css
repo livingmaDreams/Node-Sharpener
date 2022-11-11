@@ -1,0 +1,58 @@
+#myform {
+    background-color: white;
+    text-align: center;
+     width: 600px;
+     height: 500px;
+     margin: auto;
+    border-radius: 30px;
+}
+input {
+    align-self: center;
+}
+#name,#email,#phone{
+    width:500px;
+    height:25px;
+}
+
+#time,#date{
+    width: 250px;height:25px;
+}
+hr {
+            height: 2px;
+            background-color: black;
+}
+        fieldset {
+            border-bottom: 0ch;
+            border-top: 0ch;
+            border-left: 0ch;
+            border-right: 0ch;
+            border-radius: 10px;
+        }
+        body{
+            background-image: url('https://cdn.pixabay.com/photo/2013/02/18/18/35/orange-83011_960_720.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;  
+}
+button {
+            background-color: orange;
+            color: white;
+            width:500px;
+            height:40px;
+            border-radius: 5px;
+
+}
+button:hover,
+button:active{
+    background-color: white;
+    color: orange;
+}
+
+.edit-button, .delete-button{
+   color: black;
+   background-color: white;
+   width: 40px;
+   height: 20px;
+}
+
+
+       

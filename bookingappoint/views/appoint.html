@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Appointment</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <main>
+        <form  id="myform">
+            <fieldset style="color: black;">
+                <label for="bookacall" style="color:orange;;">
+                    <h2>Book a Call</h2>
+                </label><br>
+                <label for="def">Book a call slot and our representative will call you within 1hr of selected
+                    time</label><br>
+                <hr style="color: black;">
+                <input type="hidden" id="id" name="id"><br><br>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" required ><br><br>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="mail" required ><br><br>
+                <label for="Phone">Phone:</label><br>
+                <input type="text" id="phone" name="phone" required ><br><br>
+                <label for="time">Time for Call:</label><br>
+                <input type="time" id="time" name="time" required >
+                <input type = "date" id = "date"  name="date" required><br><br>
+                <button type="submit" id="submit">GET A CALL </button>
+            </fieldset>
+            <div>
+                <label for="appointment-list" id="appointment-list"><h2>FIXED APPOINTMENTS</h2></label>
+            </div>
+        </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script>
+            window.addEventListener('DOMContentLoaded',getUserDetail);
+               function getUserDetail(e){
+                 axios.get('http://localhost:3000/appoint')
+                 .then(res => {
+                    let data = res.data.allusers;                   
+                    for(let i of data)
+                    showUser(i);
+                  })
+                 .catch(err => console.log(err));    
+                }
+
+            window.addEventListener('submit',postUserDetail);
+              function postUserDetail(e){
+                const name = e.target.name.value;
+                const mail = e.target.mail.value;
+                const phone = e.target.phone.value;
+                const date = e.target.date.value;
+                const time = e.target.time.value;
+                const id = e.target.id.value;
+                const obj = {id,name,mail,phone,date,time};
+                axios.post('http://localhost:3000/appoint/list',obj)
+                  .then(res => showUser(res.data.newUserDetail))
+                  .catch(err => console.log(err));
+                }
+
+
+            window.addEventListener('click',updateDetail);
+              function updateDetail(e){
+               if(e.target.classList.contains('delete-button')){
+                 if(confirm('Are you Sure?')){
+                  let parELe = e.target.parentElement;
+                  const id = parELe.id;
+                  axios.delete(`http://localhost:3000/appoint/delete/${id}`)
+                   .then(() => removeUserFromScreen(id))
+                   .catch(err => console.log(err));
+                 }
+                }
+                if(e.target.classList.contains('edit-button')){
+                  let parELe = e.target.parentElement;
+                  const id = parELe.id;
+                  axios.get(`http://localhost:3000/appoint/edit/${id}`)
+                   .then((res) => editDetail(res.data.userdetail))
+                   .catch(err => console.log(err));
+                }
+              }
+</script>
+        <script src="bookingappoint.js"></script>
+</body>
+</html>
